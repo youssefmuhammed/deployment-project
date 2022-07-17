@@ -58,7 +58,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build-and-deploy:
-          context: aws
+          context:
           filters:
             branches:
               only:
