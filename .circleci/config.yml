@@ -44,10 +44,10 @@ jobs:
 #           command: |
 #             npm run backend:change-main
 # Building the backend
-      # - run:
-      #     name: Back-End Build
-      #     command: |
-      #       npm run api:build
+      - run:
+          name: Back-End Build
+          command: |
+            npm run api:build
 # Installing AWS Elastic Beanstalk CLI
       # - run:
       #     name: Installing AWS Elasticbeanstalk
