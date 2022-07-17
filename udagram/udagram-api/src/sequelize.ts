@@ -6,7 +6,13 @@ export const sequelize = new Sequelize({
   password: config.password,
   database: config.database,
   host: config.host,
+  port:config.dbPort,
 
   dialect: "postgres",
   storage: ":memory:",
 });
+
+
+// export const sequelize = new Sequelize(
+//   "postgres://postgres:postgres.cc9v61kkjvuh.us-east-1.rds.amazonaws.com:5432/postgres"
+// );

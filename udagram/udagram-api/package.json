@@ -1,9 +1,9 @@
 {
-  "name": "udagram-api",
+  "name": "deployment-project-api",
   "version": "2.0.0",
   "description": "",
   "engines": {
-    "node": "14.15.0"
+    "node": ">=16.0.0"
   },
   "main": "src/server.ts",
   "scripts": {
@@ -12,12 +12,12 @@
     "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
-    "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy",
-    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp -R .elasticbeanstalk www/.elasticbeanstalk && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
+    "deploy": "npm run build && eb list && eb use deployment-project-dev && eb deploy",
+    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && 7z a -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Gabriel Ruttner",
+  "author": "youssef muhammed",
   "license": "ISC",
   "dependencies": {
     "@types/bcryptjs": "2.4.2",
