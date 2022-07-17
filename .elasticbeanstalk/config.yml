@@ -9,7 +9,7 @@ branch-defaults:
     environment: staging-api
     group_suffix: null
 deploy:
-  artifact: udagram/udagram-api/www/Archive.zip
+  artifact: ./udagram/udagram-api/www/Archive.zip
   main:
     environment: deployment-project-dev
     group_suffix: null
