@@ -1,6 +1,6 @@
 # Udagram
 
-### Dependencies
+## Dependencies
 
 - Node v14.15.1 (LTS) or more recent. While older versions can work it is advisable to keep node to latest LTS version
 
@@ -16,7 +16,40 @@
 
 - AWS Elastic Beanstalk for Backend.
 
-### Environment variables
+## Backend Packages
+
+- types/bcryptjs
+- types/jsonwebtoken
+- bcryptjs
+- body-parser
+- cors
+- dotenv
+- email-validator
+- express
+- jsonwebtoken
+- pg
+- reflect-metadata
+- sequelize
+- sequelize-typescript
+
+## Frontend Packages
+
+- angular/common
+- angular/core
+- angular/forms
+- angular/http
+- angular/platform-browser
+- angular/platform-browser-dynamic
+- angular/router
+- ionic-native/core
+- ionic-native/splash-screen
+- ionic-native/status-bar
+- ionic/angular
+- core-js
+- rxjs
+- zone.js
+
+## Environment variables
 
 - POSTGRES_USERNAME=postgres
 - POSTGRES_PASSWORD=myPassword
@@ -26,7 +59,7 @@
 - AWS_REGION=us-east-1
 - AWS_PROFILE=default
 - JWT_SECRET=mysecretstring
-- URL=` <http://deployment-project-dev.eba-upnmgpzr.us-east-1.elasticbeanstalk.com/>`
+- URL=`<http://deployment-project-dev.eba-upnmgpzr.us-east-1.elasticbeanstalk.com/>`
 - PORT=3000
 - DB_PORT=5432
 - AWS_ACCESS_KEY_ID=AKIAQUOG36D34RZGWZEA
