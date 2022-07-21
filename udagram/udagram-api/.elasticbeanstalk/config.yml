@@ -1,6 +1,8 @@
 branch-defaults:
   default:
     environment: deployment-project-dev
+deploy:
+  artifact: www/Archive
 global:
   application_name: deployment-project
   branch: null
