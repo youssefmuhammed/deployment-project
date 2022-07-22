@@ -1,75 +1,60 @@
 version: 2.1
 orbs:
-  node: circleci/node@5.0.2
+  # declaring the orbs for setting up the servers and softwares during the CI/CD process.
+  # node js, aws and eb is going to be used.
+  node: circleci/node@5.0.1
+  aws-cli: circleci/aws-cli@1.3.1
   eb: circleci/aws-elastic-beanstalk@2.0.1
-  aws-cli: circleci/aws-cli@3.1.1
 jobs:
-  build-and-deploy:
+  build:
     docker:
-      - image: 'cimg/node:14.15'
+      - image: "cimg/base:stable"
+    # setting up all the softwares used for installation, building and deploying the application.
     steps:
-      - node/install:
-          node-version: '14.15'
-      - eb/setup
+      - node/install
       - checkout
       - aws-cli/setup
-# Installing the frontend dependencies
+      - eb/setup
+      - run:
+          name: "Checking Versions"
+          command: |
+            node --version
       - run:
           name: Front-End Install
           command: |
-            echo "NODE --version" 
-            echo $(node --version)
-            echo "NPM --version" 
-            echo $(npm --version)
             npm run frontend:install
-      
-# Building the frontend
+      - run:
+          name: Back-End Install
+          command: |
+            npm run api:install
       - run:
           name: Front-End Build
           command: |
             npm run frontend:build
-# Deploying the frontend to AWS S3
       - run:
-          name: Front-End Deploy
+          name: Back-End Build
           command: |
-            npm run frontend:deploy
-# # Installing the Backend dependencies
-#       - run:
-#           name: Back-End Install
-#           command: |
-#             npm run api:install
-
-# # Building the backend
-#       - run:
-#           name: Back-End Build
-#           command: |
-#             npm run api:build
-# # 
-# Deploying the backend to AWS Elastic Beanstalk
+            npm run api:build
+      # - run:
+      #     name: Front-End Test
+      #     command: |
+      #       npm run frontend:test
+      # - run:
+      #     name: Back-End Test
+      #     command: |
+      #       npm run backend:test
       - run:
-          name: Back-End Deploy
+          name: Deploy Back-End EB
           command: |
             npm run api:deploy
-          
-
+      - run:
+          name: Deploy Front-End S3
+          command: |
+            npm run frontend:deploy
 workflows:
-  build-and-deploy:
+  basic-workflow:
     jobs:
-      - build-and-deploy:
+      - build:
           filters:
             branches:
-              only:
-                - main
-
-
-
-# Installing AWS Elastic Beanstalk CLI
-#       - run:
-#           name: Installing AWS Elasticbeanstalk
-#           command: |
-#             npm run api:aws-eb
-# # # Changing the main entry point in package.json for the Backend
-#       - run:
-#           name: Back-End Change Main Entry Point
-#           command: |
-#             npm run api:change-main
+              only: main
