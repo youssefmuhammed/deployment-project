@@ -13,7 +13,7 @@
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
     "deploy": "npm run build && eb list && eb use deployment-project-dev && eb deploy",
-    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip a -r -y Archive.zip . ",
+    "build": "npm install . && npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip --symlinks a -r Archive.zip . ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "aws-eb": "chmod +x bin/aws-eb.sh && bin/aws-eb.sh",
     "change-main": "npm run install-jk-sponge && npm run edit-main-entry-point",
